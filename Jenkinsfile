@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     stages {
-        when {
-            branch 'develop'
-         stage('Maven checkout') {
+       
+         stage('Maven Build') {
+              when {
+                 branch 'develop'
+              }
             steps {
                 sh 'mvn clean package'
             }
