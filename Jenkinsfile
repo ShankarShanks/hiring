@@ -2,17 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Git checkout') {
-            steps {
-                git branch: 'main', credentialsId: 'git-creds', url: 'https://github.com/ShankarShanks/hiring'
-            }
-        }
+        when {
+            branch 'develop'
          stage('Maven checkout') {
             steps {
                 sh 'mvn clean package'
             }
         }
-         stage('Tomcat Deploy') {
+            
+         stage('Tomcat Deploy - Dev') {
             steps {
                 sshagent(['tomcat-creds']) {
                    sh "echo hello replay demo"
