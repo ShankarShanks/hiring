@@ -11,6 +11,8 @@ pipeline {
         }
             
          stage('Tomcat Deploy - Dev') {
+             when {
+                 branch 'develop'
             steps {
                 sshagent(['tomcat-creds']) {
                    sh "echo hello replay demo"
