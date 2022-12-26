@@ -4,28 +4,20 @@ pipeline {
     stages {
        
          stage('Maven Build') {
-              when {
-                 branch 'develop'
-              }
             steps {
                 sh 'mvn clean package'
             }
         }
             
-         stage('Tomcat Deploy - Dev') {
-             when {
-                 branch 'develop'
-             }    
+         stage('Docker Build') {    
             steps {
-               echo "Deploying to dev"
+               sh "docker build -t shankarshanks/hiring:0.0.2 ."
             }
         }
-         stage('Tomcat Deploy - Prod') {
-             when {
-                 branch 'main'
-             }    
+         stage('Docker Push') {
             steps {
-               echo "Deploying to production"
+               sh "Docker login -u shankarshanks -p xxxxxx"
+               sh "Docker push shankarshanks/hiring:0.0.2"
             }
          }    
     }
