@@ -22,13 +22,5 @@ pipeline {
                 }    
             }
          }  
-        stage('Docker Deploy') {
-            steps {
-               sshagent(['docker-host']) {
-                  sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.39.52 docker run -d -p 8080:8080 --name hiring shankarshanks/hiring:0.0.2"
-               }
-            }
-        }
-        
     }
 }
