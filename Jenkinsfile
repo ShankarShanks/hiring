@@ -24,7 +24,7 @@ pipeline {
                 branch 'main'
             }
             steps{
-                echo "Deployinf to prod"
+                echo "Deploying to prod"
             }
         }
     }
