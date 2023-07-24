@@ -25,6 +25,7 @@ pipeline {
             }
             steps{
                 echo "Deployinf to prod"
+            }
         }
     }
 }
