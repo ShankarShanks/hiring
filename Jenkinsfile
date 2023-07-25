@@ -30,6 +30,6 @@ pipeline{
     }
 }
 def commit_id() {
-    sh returnStdout: true, script: 'git rev-parse --short HEAD'
+    id = sh returnStdout: true, script: 'git rev-parse --short HEAD'
     return id
 }
